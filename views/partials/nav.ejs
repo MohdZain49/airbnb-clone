@@ -1,0 +1,83 @@
+<header class="bg-red-500 text-white p-4 shadow-md">
+  <nav class="container mx-auto flex justify-between items-center">
+    <ul class="flex space-x-4">
+      <li>
+        <a
+          href="/"
+          class="<%= currentPage === 'index' ? 'bg-red-400' : 'hover:bg-red-400' %> py-2 px-4 rounded transition duration-300"
+          >Airbnb</a
+        >
+      </li>
+      <% if(isLoggedIn) { %> <% if(user && user.userType === "guest") { %>
+      <li>
+        <a
+          href="/homes"
+          class="<%= currentPage === 'Homes' ? 'bg-red-400' : 'hover:bg-red-400' %> py-2 px-4 rounded transition duration-300"
+          >Homes List</a
+        >
+      </li>
+
+      <li>
+        <a
+          href="/favourites"
+          class="<%= currentPage === 'favourites' ? 'bg-red-400' : 'hover:bg-red-400' %> py-2 px-4 rounded transition duration-300"
+          >Favourites</a
+        >
+      </li>
+
+      <li>
+        <a
+          href="/bookings"
+          class="<%= currentPage === 'bookings' ? 'bg-red-400' : 'hover:bg-red-400' %> py-2 px-4 rounded transition duration-300"
+          >Bookings</a
+        >
+      </li>
+
+      <% } else if(user && user.userType === "host") { %>
+      <li>
+        <a
+          href="/host/host-homes-list"
+          class="<%= currentPage === 'host-homes' ? 'bg-red-400' : 'hover:bg-red-400' %> py-2 px-4 rounded transition duration-300"
+          >Host Homes</a
+        >
+      </li>
+
+      <li>
+        <a
+          href="/host/add-home"
+          class="<%= currentPage === 'addHome' ? 'bg-red-400' : 'hover:bg-red-400' %> py-2 px-4 rounded transition duration-300"
+          >Add Home</a
+        >
+      </li>
+
+      <% } %> 
+    <% } %>
+    </ul>
+    <ul class="flex space-x-4">
+      <% if(!isLoggedIn) { %>
+      <li>
+        <a
+          href="/auth/signup"
+          class="<%= currentPage === 'signup' ? 'bg-red-400' : 'hover:bg-red-400' %> py-2 px-4 rounded transition duration-300 ml-auto"
+          >Signup</a
+        >
+      </li>
+      <li>
+        <a
+          href="/auth/login"
+          class="<%= currentPage === 'login' ? 'bg-red-400' : 'hover:bg-red-400' %> py-2 px-4 rounded transition duration-300 ml-auto"
+          >Login</a
+        >
+      </li>
+      <% } else { %>
+      <li>
+        <a
+          href="/auth/logout"
+          class="hover:bg-red-400 py-2 px-4 rounded transition duration-300 ml-auto"
+          >Logout</a
+        >
+      </li>
+      <% } %>
+    </ul>
+  </nav>
+</header>
